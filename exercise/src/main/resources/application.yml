@@ -1,0 +1,43 @@
+server:
+    port: 8181
+spring:
+    application:
+        name: ExerciseApp
+    datasource:
+        hikari:
+            connection-timeout: 3000
+        url: jdbc:postgresql://localhost:5432/notesappdb
+        username: postgres
+        password: toor
+    jpa:
+        show-sql: false
+        hibernate:
+            ddl-auto: create
+    quartz:
+        job-store-type: jdbc
+        jdbc:
+            initialize-schema: never
+            comment-prefix: " - "
+        properties:
+            org:
+                quartz:
+                    threadPool:
+                        threadCount: 8
+                    jobStore:
+                        isClustered: true
+                        clusterCheckinInterval: 5000
+                    scheduler:
+                        intanceId: AUTO
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: kocaahmet1004@gmail.com
+        password: Y40gg.Y4gg0.
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enabled: true
+custom:
+    quartz-enabled: false

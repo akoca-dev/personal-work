@@ -1,0 +1,39 @@
+server:
+    port: 8888
+
+spring:
+    cloud:
+        config:
+            server:
+                git:
+#                   uri: ${HOME}/config-server-repo
+                    uri: file://${HOME}/config-server-repo
+#                   uri: ssh://localhost/etc/config-server-repo
+#                   username: noname
+#                   password: 00**
+                    clone-on-start: true
+    security:
+        user:
+            name: root
+            password: s3cr3t
+
+    rabbitmq:
+        host: localhost
+        virtual-host: /
+        port: 5672
+        username: guest
+        password: guest
+
+#Other Important Usages Of This Config Server
+
+#Serve configuration in YAML or Properties format instead of JSON – also with placeholders resolved. Which can be useful, when using it in non-Spring environments,
+#    where the configuration is not directly mapped to a PropertySource.
+
+#Serve plain text configuration files – in turn optionally with resolved placeholders. This can be useful for example to provide an environment-dependent logging-configuration.
+
+#
+#Embed the config server into an application, where it configures itself from a Git repository, instead of running as standalone application serving clients.
+#    Therefore some bootstrap properties must be set and/or the @EnableConfigServer annotation must be removed, which depends on the use case.
+
+#Make the config server available at Spring Netflix Eureka service discovery and enable automatic server discovery in config clients.
+#    This becomes important if the server has no fixed location or it moves in its location.

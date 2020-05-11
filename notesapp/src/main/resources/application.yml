@@ -1,0 +1,25 @@
+server:
+    servlet:
+        context-path: /NotesAppApi
+    port: 8080
+spring:
+    r2dbc:
+        url: r2dbc:postgresql://127.0.0.1:5432/notesappdb
+        username: postgres
+        password: toor
+    datasource:
+        hikari:
+            pool-name: NotesAppHikariConnectionPool
+            leak-detection-threshold: 3000
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: create-drop
+    security:
+        user:
+            name: root
+            password: toor
+#            roles: regular, admin, user, role_user
+logging:
+    level:
+        root: info

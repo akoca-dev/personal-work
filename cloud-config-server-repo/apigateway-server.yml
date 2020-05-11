@@ -1,0 +1,41 @@
+#For testing before wiring with eureka server
+server:
+    port: ${APIGATEWAY_PORT:9191}
+spring:
+    cloud:
+        gateway:
+            discovery:
+                locator:
+#                   enabled: true
+                    lower-case-service-id: true
+            globalcors:
+                corsConfigurations:
+                    '[/**]':
+                        allowedOrigins: "*"
+                        allowedMethods:
+                            - GET
+                            - POST
+                            - PUT
+                            - PATCH
+                            - DELETE
+    rabbitmq:
+        host: localhost
+        virtual-host: /
+        port: 5672
+        username: guest
+        password: guest
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: ${EUREKA_SERVER_URI:http://localhost:8761/eureka/}
+        register-with-eureka: false
+    instance:
+        preferIpAddress: true
+
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+    security:
+        enabled: false
