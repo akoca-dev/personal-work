@@ -26,7 +26,7 @@ public class EntNote extends BaseEntUpdatable {
     private String ownerId;
 
     @ElementCollection
-    private final Set<String> partnerIds = new HashSet<>();
+    private final Set<String> collaboratorIds = new HashSet<>();
     private String title;
     private String bodyText;
 
@@ -50,8 +50,8 @@ public class EntNote extends BaseEntUpdatable {
         return ownerId;
     }
 
-    public Set<String> getPartnerIds() {
-        return partnerIds;
+    public Set<String> getCollaboratorIds() {
+        return collaboratorIds;
     }
 
     public String getTitle() {
@@ -66,16 +66,16 @@ public class EntNote extends BaseEntUpdatable {
         return triggerIds;
     }
 
-    public boolean addPartnerId(String partnerId) {
-        return partnerIds.add(partnerId);
+    public boolean addCollaboratorId(String collaboratorId) {
+        return collaboratorIds.add(collaboratorId);
     }
 
-    public boolean addPartnerIds(Set<String> newPartnerIds) {
-        return partnerIds.addAll(newPartnerIds);
+    public boolean addCollaboratorIds(Set<String> newCollaboratorIds) {
+        return collaboratorIds.addAll(newCollaboratorIds);
     }
 
-    public boolean removePartnerId(String partnerId) {
-        return partnerIds.remove(partnerId);
+    public boolean removeCollaboratorId(String collaboratorId) {
+        return collaboratorIds.remove(collaboratorId);
     }
 
     public boolean addTriggerId(String triggerId) {
